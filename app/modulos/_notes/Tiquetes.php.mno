@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_listado" value="name:id;datatype:int,name:agencia;datatype:int,name:numero;datatype:string,name:valor;datatype:string,name:fecha;datatype:date,name:usuario;datatype:int,name:usu;datatype:string,name:agencian;datatype:string" />
+	<infoitem key="UD_roles" value="name:id;datatype:int,name:nombre;datatype:string" />
+	<infoitem key="UD_roles1" value="name:id;datatype:int,name:nombre;datatype:string" />
+	<infoitem key="UD_usu" value="name:id;datatype:int,name:agencia;datatype:int,name:numero;datatype:string,name:valor;datatype:string,name:fecha;datatype:date,name:usuario;datatype:int" />
+	<infoitem key="UD_agencias" value="name:id;datatype:int,name:codigo;datatype:int,name:nombre;datatype:string,name:municipio;datatype:string,name:usuario;datatype:int" />
+	<infoitem key="UD_loterias" value="name:id;datatype:int,name:codigo;datatype:string,name:nombre;datatype:string,name:usuario;datatype:int" />
+</info>

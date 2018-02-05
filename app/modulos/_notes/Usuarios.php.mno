@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_listado" value="name:id;datatype:int,name:nombre;datatype:string,name:usuario;datatype:string,name:pass;datatype:string,name:telefono;datatype:string,name:rol;datatype:int,name:rol_n;datatype:string" />
+	<infoitem key="UD_roles" value="name:id;datatype:int,name:nombre;datatype:string" />
+	<infoitem key="UD_user" value="name:id;datatype:int,name:nombre;datatype:string,name:usuario;datatype:string,name:pass;datatype:string,name:telefono;datatype:string,name:rol;datatype:int" />
+	<infoitem key="UD_usu" value="name:id;datatype:int,name:nombre;datatype:string,name:usuario;datatype:string,name:pass;datatype:string,name:telefono;datatype:string,name:rol;datatype:int" />
+	<infoitem key="UD_roles1" value="name:id;datatype:int,name:nombre;datatype:string" />
+</info>
