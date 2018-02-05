@@ -177,10 +177,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE agencias SET codigo=%s, nombre=%s, municipio=%s WHERE id=%s",
-                       GetSQLValueString($_POST['codigo'], "text"),
-                       GetSQLValueString($_POST['nombre'], "text"),
-                       GetSQLValueString($_POST['municipio'], "text"),
+	 $valor=str_replace(".", "",$_POST['valor']);
+  $updateSQL = sprintf("UPDATE tiquetes SET agencia=%s, numero=%s, valor=%s, fecha=%s WHERE id=%s",
+                       GetSQLValueString($_POST['agencia'], "text"),
+                       GetSQLValueString($_POST['numero'], "text"),
+                       GetSQLValueString($valor, "text"),
+					   GetSQLValueString($_POST['fecha'], "date"),
                        GetSQLValueString($_POST['id'], "int"));
 
   mysql_select_db($database_gchance, $gchance);
@@ -290,7 +292,7 @@ $totalRows_loterias2 = mysql_num_rows($loterias2);
               <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
                 <table align="center">
                   <tr valign="baseline">
-                    <td nowrap="nowrap" align="right">Codigo:</td>
+                    <td nowrap="nowrap" align="right">Agencia:</td>
                     <td><select id="agencia2" name="agencia" required="required">
                       <?php
 do {  
@@ -309,16 +311,16 @@ do {
                   </tr>
                   <tr valign="baseline">
                     <td nowrap="nowrap" align="right">Numero:</td>
-                    <td><input type="text" name="nombre" required value="<?php echo htmlentities($row_usu['numero']); ?>" size="32" /></td>
+                    <td><input type="text" name="numero" required value="<?php echo htmlentities($row_usu['numero']); ?>" size="32" /></td>
                     <td>&nbsp;</td>
                   </tr>
                   <tr valign="baseline">
                     <td nowrap="nowrap" align="right">Valor:</td>
-                    <td><input type="text" name="municipio" value="<?php echo htmlentities($row_usu['valor']); ?>" onkeyup="puntitos(this,this.value.charAt(this.value.length-1))" size="32" /></td>
+                    <td><input type="text" name="valor" value="<?php echo htmlentities($row_usu['valor']); ?>" onkeyup="puntitos(this,this.value.charAt(this.value.length-1))" size="32" /></td>
                     <td>&nbsp;</td>
                   </tr>
                     <td nowrap="nowrap" align="right">Fecha:</td>
-                    <td><input type="date" class="form-control" name="municipio" value="<?php echo htmlentities($row_usu['fecha']); ?>" onkeyup="puntitos(this,this.value.charAt(this.value.length-1))" size="32" /></td>
+                    <td><input type="date" class="form-control" name="fecha" value="<?php echo htmlentities($row_usu['fecha']); ?>" onkeyup="puntitos(this,this.value.charAt(this.value.length-1))" size="32" /></td>
                     <td>&nbsp;</td>
                   <tr valign="baseline">
                     <td nowrap="nowrap" align="right">&nbsp;</td>

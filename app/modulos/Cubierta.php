@@ -84,14 +84,14 @@ $(document).ready(function() {
     
     <table width="100%" border="0">
   <tr>
-    <td width="20%"><input type="date" name="fecha" value="<?php echo date('Y-m-d'); ?>" class="form-control" size="20" required /><input type="hidden" name="modulo" value="Consolidado" class="form-control" size="20" /></td>
+    <td width="20%"><input type="date" name="fecha" value="<?php echo date('Y-m-d'); ?>" class="form-control" size="20" required /><input type="hidden" name="modulo" value="Cubierta" class="form-control" size="20" /></td>
     <td width="80%"><input type="submit" value="Cambiar" class="btn btn-info" style="margin-top:0px" /></td>
   </tr>
 </table>
 
     </form>      
     <hr />
-    <form action="ficheroExcel.php" method="post" target="_blank" id="FormularioExportacion">
+    <form action="ficheroExcel2.php" method="post" target="_blank" id="FormularioExportacion">
     <p>Exportar a Excel  <img src="../img/export_to_excel.gif" class="botonExcel" /></p>
     <input type="hidden" id="datos_a_enviar" name="datos_a_enviar" />
     </form>    

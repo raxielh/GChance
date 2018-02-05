@@ -87,7 +87,7 @@ CREATE TABLE `ganadores` (
 
 LOCK TABLES `ganadores` WRITE;
 
-insert  into `ganadores`(`id`,`loteria`,`numero`,`fecha`,`usuario`) values (8,18,'5746','2018-02-04',1),(9,17,'5123','2018-02-04',1),(10,16,'4528','2018-02-04',1),(11,14,'7412','2018-02-04',1),(12,15,'8521','2018-02-04',1),(13,17,'7412','2018-02-06',1);
+insert  into `ganadores`(`id`,`loteria`,`numero`,`fecha`,`usuario`) values (8,18,'5791','2018-02-04',1),(9,17,'5123','2018-02-04',1),(10,16,'8546','2018-02-04',1),(11,14,'7412','2018-02-04',1),(12,15,'8521','2018-02-04',1),(13,17,'7412','2018-02-06',1);
 
 UNLOCK TABLES;
 
@@ -150,13 +150,13 @@ CREATE TABLE `tiquetes` (
   KEY `fk_agencia` (`agencia`),
   CONSTRAINT `fk_agencia` FOREIGN KEY (`agencia`) REFERENCES `agencias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_usu` FOREIGN KEY (`usuario`) REFERENCES `acceso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiquetes` */
 
 LOCK TABLES `tiquetes` WRITE;
 
-insert  into `tiquetes`(`id`,`agencia`,`numero`,`valor`,`fecha`,`usuario`) values (13,10,'5791','1000','2018-02-04',1),(14,11,'8546','2000','2018-02-04',1);
+insert  into `tiquetes`(`id`,`agencia`,`numero`,`valor`,`fecha`,`usuario`) values (13,10,'5791','1000','2018-02-04',1),(14,11,'8546','3000','2018-02-04',1),(15,11,'8521','5000','2018-02-04',1);
 
 UNLOCK TABLES;
 
@@ -173,13 +173,13 @@ CREATE TABLE `tiquetes_as_loterias` (
   KEY `fk_tiquetes` (`tiquetes`),
   CONSTRAINT `fk_loterias` FOREIGN KEY (`loterias`) REFERENCES `loterias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tiquetes` FOREIGN KEY (`tiquetes`) REFERENCES `tiquetes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiquetes_as_loterias` */
 
 LOCK TABLES `tiquetes_as_loterias` WRITE;
 
-insert  into `tiquetes_as_loterias`(`id`,`loterias`,`tiquetes`) values (4,13,14),(3,15,14),(2,16,14),(1,18,13);
+insert  into `tiquetes_as_loterias`(`id`,`loterias`,`tiquetes`) values (3,15,14),(5,15,15),(2,16,14),(1,18,13);
 
 UNLOCK TABLES;
 

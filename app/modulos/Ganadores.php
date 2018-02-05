@@ -130,7 +130,7 @@ $totalRows_loterias = mysql_num_rows($loterias);
               <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
                 <table align="center">
                   <tr valign="baseline">
-                    <td nowrap="nowrap" align="right">Loteria:</td>
+                    <td align="right" valign="middle" nowrap="nowrap">Loteria:</td>
                     <td><table width="100%" border="0">
                       <tr>
                           <td><select name="loteria" id="loteria">
@@ -177,7 +177,7 @@ do {
       <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
           <table align="center">
             <tr valign="baseline">
-              <td nowrap="nowrap" align="right">Loteria:</td>
+              <td align="right" valign="middle" nowrap="nowrap">Loteria:</td>
               <td><table width="100%" border="0">
                 <tr>
                     <td><select name="loteria" id="loteria2">

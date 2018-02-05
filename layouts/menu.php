@@ -65,9 +65,9 @@ $totalRows_tope = mysql_num_rows($tope);
 
 <a class="btn btn-app" href="?modulo=Ganadores"><i class="fas fa-star grande"></i><br> Ganadores</a>
 
-<a class="btn btn-app" href="?modulo=Consolidado"><i class="fab fa-audible grande"></i><br> Consolidado</a>
+<a class="btn btn-app" href="?modulo=Consolidado&fecha=<?php echo date('Y-m-d'); ?>"><i class="fab fa-audible grande"></i><br> Consolidado</a>
 
-<a class="btn btn-app" href="?modulo=Cubierta"><i class="fas fa-book grande"></i><br>  Cubierta</a>
+<a class="btn btn-app" href="?modulo=Cubierta&fecha=<?php echo date('Y-m-d'); ?>"><i class="fas fa-book grande"></i><br>  Cubierta</a>
 <?php } ?>
 </div>
 <?php
