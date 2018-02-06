@@ -37,7 +37,7 @@ CREATE TABLE `acceso` (
 
 LOCK TABLES `acceso` WRITE;
 
-insert  into `acceso`(`id`,`nombre`,`usuario`,`pass`,`telefono`,`rol`) values (1,'administrador','admin','40bd001563085fc35165329ea1ff5c5ecbdbbeef','7898',2),(9,'Rodrigo','digitador','0e9ca2d77fe5c3556d9f94123d7e38812c4612f5','456',1);
+insert  into `acceso`(`id`,`nombre`,`usuario`,`pass`,`telefono`,`rol`) values (1,'administrador','admin','40bd001563085fc35165329ea1ff5c5ecbdbbeef','7898',2);
 
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `agencias` (
 
 LOCK TABLES `agencias` WRITE;
 
-insert  into `agencias`(`id`,`codigo`,`nombre`,`valor`,`municipio`,`usuario`) values (10,0741,'Montelibano','450','Montelibano',1),(11,0745,'Monteria','400','Monteria',1);
+insert  into `agencias`(`id`,`codigo`,`nombre`,`valor`,`municipio`,`usuario`) values (10,0741,'Montelibano','400','Montelibano',1),(11,0745,'Monteria','400','Monteria',1);
 
 UNLOCK TABLES;
 
@@ -81,13 +81,13 @@ CREATE TABLE `ganadores` (
   KEY `fk_usur` (`usuario`),
   CONSTRAINT `fk_loteria` FOREIGN KEY (`loteria`) REFERENCES `loterias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_usur` FOREIGN KEY (`usuario`) REFERENCES `acceso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ganadores` */
 
 LOCK TABLES `ganadores` WRITE;
 
-insert  into `ganadores`(`id`,`loteria`,`numero`,`fecha`,`usuario`) values (8,18,'5791','2018-02-04',1),(9,17,'5123','2018-02-04',1),(10,16,'8546','2018-02-04',1),(11,14,'7412','2018-02-04',1),(12,15,'8521','2018-02-04',1),(13,17,'7412','2018-02-06',1);
+insert  into `ganadores`(`id`,`loteria`,`numero`,`fecha`,`usuario`) values (8,18,'5791','2018-02-04',1),(9,17,'5123','2018-02-04',1),(10,16,'8546','2018-02-04',1),(11,14,'7412','2018-02-04',1),(12,15,'8521','2018-02-04',1),(13,17,'1234','2018-02-05',1),(14,16,'7451','2018-02-05',1),(15,18,'3655','2018-02-05',1),(18,15,'1111','2018-02-05',1),(19,14,'7777','2018-02-05',1),(20,19,'456','2018-02-05',1);
 
 UNLOCK TABLES;
 
@@ -105,13 +105,13 @@ CREATE TABLE `loterias` (
   UNIQUE KEY `nombre` (`nombre`),
   KEY `fk_user` (`usuario`),
   CONSTRAINT `fk_user` FOREIGN KEY (`usuario`) REFERENCES `acceso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 /*Data for the table `loterias` */
 
 LOCK TABLES `loterias` WRITE;
 
-insert  into `loterias`(`id`,`codigo`,`nombre`,`usuario`) values (13,'001','Bogota',1),(14,'002','Boyaca',1),(15,'003','Cordoba',1),(16,'004','Medellin',1),(17,'005','Cundimarca',1),(18,'006','Risaralda',1);
+insert  into `loterias`(`id`,`codigo`,`nombre`,`usuario`) values (13,'001','Bogota',1),(14,'002','Boyaca',1),(15,'003','Cordoba',1),(16,'004','Medellin',1),(17,'005','Cundimarca',1),(18,'006','Risaralda',1),(19,'nueva','nueva',1);
 
 UNLOCK TABLES;
 
@@ -150,13 +150,13 @@ CREATE TABLE `tiquetes` (
   KEY `fk_agencia` (`agencia`),
   CONSTRAINT `fk_agencia` FOREIGN KEY (`agencia`) REFERENCES `agencias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_usu` FOREIGN KEY (`usuario`) REFERENCES `acceso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiquetes` */
 
 LOCK TABLES `tiquetes` WRITE;
 
-insert  into `tiquetes`(`id`,`agencia`,`numero`,`valor`,`fecha`,`usuario`) values (13,10,'5791','1000','2018-02-04',1),(14,11,'8546','3000','2018-02-04',1),(15,11,'8521','5000','2018-02-04',1);
+insert  into `tiquetes`(`id`,`agencia`,`numero`,`valor`,`fecha`,`usuario`) values (13,10,'5791','1000','2018-02-04',1),(14,11,'8546','3000','2018-02-04',1),(15,11,'8521','5000','2018-02-04',1),(16,11,'7454','5000','2018-02-05',1),(17,10,'7458','3000','2018-02-05',1),(18,11,'5474','4000','2018-02-05',1),(19,11,'7124','3000','2018-02-05',1),(20,11,'5546','2500','2018-02-05',1),(21,11,'7451','4000','2018-02-05',1),(22,10,'7412','4000','2018-02-05',1),(23,10,'1234','6000','2018-02-05',1),(24,11,'1234','5000','2018-02-05',1),(25,11,'1234','5000','2018-02-05',1),(26,11,'1111','2000','2018-02-05',1),(27,11,'7777','4000','2018-02-05',1),(28,11,'456','8000','2018-02-05',1),(29,11,'1982','1000','2018-02-05',1),(30,11,'2465','1000','2018-02-05',1),(31,11,'3655','1000','2018-02-05',1),(32,11,'8397','1000','2018-02-05',1),(33,11,'2184','1000','2018-02-05',1),(34,11,'2647','1000','2018-02-05',1),(35,11,'3841','1000','2018-02-05',1);
 
 UNLOCK TABLES;
 
@@ -173,13 +173,13 @@ CREATE TABLE `tiquetes_as_loterias` (
   KEY `fk_tiquetes` (`tiquetes`),
   CONSTRAINT `fk_loterias` FOREIGN KEY (`loterias`) REFERENCES `loterias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tiquetes` FOREIGN KEY (`tiquetes`) REFERENCES `tiquetes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tiquetes_as_loterias` */
 
 LOCK TABLES `tiquetes_as_loterias` WRITE;
 
-insert  into `tiquetes_as_loterias`(`id`,`loterias`,`tiquetes`) values (3,15,14),(5,15,15),(2,16,14),(1,18,13);
+insert  into `tiquetes_as_loterias`(`id`,`loterias`,`tiquetes`) values (9,13,18),(12,14,19),(13,14,20),(22,14,27),(3,15,14),(5,15,15),(11,15,19),(21,15,26),(2,16,14),(8,16,17),(10,16,19),(14,16,21),(18,16,23),(7,17,16),(17,17,23),(1,18,13),(6,18,16),(15,18,22),(16,18,23),(19,18,24),(20,18,25),(24,18,28),(26,18,29),(28,18,30),(38,18,31),(31,18,32),(33,18,33),(35,18,34),(37,18,35),(23,19,28),(25,19,29),(27,19,30),(29,19,31),(30,19,32),(32,19,33),(34,19,34),(36,19,35);
 
 UNLOCK TABLES;
 
@@ -196,13 +196,13 @@ CREATE TABLE `tope` (
   UNIQUE KEY `fecha_tope` (`fecha`),
   KEY `fk_use` (`usuario`),
   CONSTRAINT `fk_use` FOREIGN KEY (`usuario`) REFERENCES `acceso` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tope` */
 
 LOCK TABLES `tope` WRITE;
 
-insert  into `tope`(`id`,`fecha`,`tope`,`usuario`) values (1,'2018-02-04','1000',1);
+insert  into `tope`(`id`,`fecha`,`tope`,`usuario`) values (1,'2018-02-04','1000',1),(2,'2018-02-05','1000',1);
 
 UNLOCK TABLES;
 
