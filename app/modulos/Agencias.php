@@ -143,7 +143,7 @@ $totalRows_usu = mysql_num_rows($usu);
                   </tr>
                   <tr valign="baseline">
                     <td nowrap="nowrap" align="right">Valor:</td>
-                    <td><input type="text" name="municipio" value="<?php echo htmlentities($row_usu['valor'], ENT_COMPAT, ''); ?>" size="32" /></td>
+                    <td><input type="text" name="valor" value="<?php echo htmlentities($row_usu['valor'], ENT_COMPAT, ''); ?>" size="32" /></td>
                   </tr>
                   <tr valign="baseline">
                     <td nowrap="nowrap" align="right">&nbsp;</td>

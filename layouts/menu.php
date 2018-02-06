@@ -48,7 +48,7 @@ $totalRows_tope = mysql_num_rows($tope);
 
 <hr />
 </div>
-<div class="col-md-12">
+<div class="col-md-9">
 <?php if($r==2){ ?>
 <a class="btn btn-app" href="?modulo=Usuarios"><i class="fas fa-users grande"></i><br> Usuarios</a>
 
@@ -63,12 +63,23 @@ $totalRows_tope = mysql_num_rows($tope);
 <?php if($r==2){ ?>
 <a class="btn btn-app" href="?modulo=Tope"><i class="fas fa-stop-circle grande"></i><br> Tope</a>
 
-<a class="btn btn-app" href="?modulo=Ganadores"><i class="fas fa-star grande"></i><br> Ganadores</a>
+<a class="btn btn-app" href="?modulo=Ganadores"><i class="fas fa-star grande"></i><br> Resultado Loteria</a>
 
-<a class="btn btn-app" href="?modulo=Consolidado&fecha=<?php echo date('Y-m-d'); ?>"><i class="fab fa-audible grande"></i><br> Consolidado</a>
+<a class="btn btn-app" href="?modulo=Consolidado&fecha=<?php echo date('Y-m-d'); ?>"><i class="fab fa-audible grande"></i><br> Consolidado Ganadores</a>
 
-<a class="btn btn-app" href="?modulo=Cubierta&fecha=<?php echo date('Y-m-d'); ?>"><i class="fas fa-book grande"></i><br>  Cubierta</a>
+<a class="btn btn-app" href="?modulo=Consolidado_a_Pagar&fecha=<?php echo date('Y-m-d'); ?>"><i class="fas fa-book grande"></i><br>  Consolidado a Pagar</a>
+<hr />
+<a class="btn btn-app" href="?modulo=Reporte_Cubierta&fecha=<?php echo date('Y-m-d'); ?>"><i class="fas fa-book grande"></i><br>  Reporte Cubierta</a>
+
+<a class="btn btn-app" href="?modulo=Reporte_Tope&fecha=<?php echo date('Y-m-d'); ?>"><i class="fas fa-book grande"></i><br>  Reporte Tope</a>
+
+<a class="btn btn-app" href="?modulo=Reporte_Total_Apostado&fecha=<?php echo date('Y-m-d'); ?>"><i class="fas fa-book grande"></i><br>  Reporte Total Apostado</a>
+
+
 <?php } ?>
+</div>
+<div class="col-md-3">
+resultado loteria fecha
 </div>
 <?php
 mysql_free_result($tope);

@@ -239,11 +239,11 @@ $totalRows_loterias2 = mysql_num_rows($loterias2);
 
 
 <ul class="nav nav-tabs">
-	<li class="active"><a  href="#1" data-toggle="tab">Listado</a></li>
-	<li ><a href="#2" data-toggle="tab">Agregar</a></li>
+	<li ><a  href="#1" data-toggle="tab">Listado</a></li>
+	<li class="active"><a href="#2" data-toggle="tab">Agregar</a></li>
 </ul>
 <div class="tab-content ">
-	<div class="tab-pane active" id="1">
+	<div class="tab-pane " id="1">
     	<div class="row">
           <div class="col-md-9">
             <?php if ($totalRows_listado > 0) { // Show if recordset not empty ?>
@@ -388,7 +388,7 @@ do {
         </div>
         
   </div>
-	<div class="tab-pane" id="2">
+	<div class="tab-pane active" id="2">
       <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
           <table align="center">
             <tr valign="baseline">
@@ -413,7 +413,7 @@ do {
             </tr>
             <tr valign="baseline">
               <td nowrap="nowrap" align="right">Numero:</td>
-              <td><input type="number" name="numero" size="32" required /></td>
+              <td><input type="number" name="numero" autofocus size="32" required /></td>
               <td>&nbsp;</td>
             </tr>
             <tr valign="baseline">

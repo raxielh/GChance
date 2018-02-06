@@ -32,36 +32,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 mysql_select_db($database_gchance, $gchance);
-$query_listado = "
-SELECT
-a.nombre AS
-agencias,
-a.valor AS
-agencia_valor, top.tope AS
-tope,
-l.id AS loteria_id,
-l.nombre AS
-loteria,
-t.numero AS
-numero,
-t.valor/(SELECT COUNT(*) FROM tiquetes_as_loterias WHERE tiquetes=t.id) AS valor, 
-t.fecha AS fecha
-FROM
-tiquetes t,
-ganadores g,
-tiquetes_as_loterias tl,
-loterias l,
-agencias a,
-tope top
-WHERE
-t.id=tl.tiquetes AND
-t.numero=g.numero AND
-g.loteria=tl.loterias AND
-g.loteria=l.id AND
-t.agencia=a.id AND
-g.fecha='".$_GET['fecha']."' AND 
-top.fecha='".$_GET['fecha']."'
-ORDER BY t.numero,l.nombre ASC
+$query_listado = "SELECT a.*,acc.usuario AS usu,ag.`nombre` AS agencian  FROM tiquetes a,acceso acc,agencias ag WHERE a.usuario=acc.id AND a.`agencia`=ag.`id` 
+AND a.`fecha`='".$_GET['fecha']."'
+ORDER BY a.id DESC
 ";
 //echo $query_listado ;
 $listado = mysql_query($query_listado, $gchance) or die(mysql_error());
@@ -86,12 +59,12 @@ $(document).ready(function() {
 </style>
 <div class="tab-content ">
 	<div class="tab-pane active" id="1">
-    <form action="index.php?modulo=Consolidado" method="get" >
+    <form action="index.php?modulo=Reporte_Total_Apostado" method="get" >
     
     
     <table width="100%" border="0">
   <tr>
-    <td width="20%"><input type="date" name="fecha" value="<?php echo date('Y-m-d'); ?>" class="form-control" size="20" required /><input type="hidden" name="modulo" value="Consolidado" class="form-control" size="20" /></td>
+    <td width="20%"><input type="date" name="fecha" value="<?php echo date('Y-m-d'); ?>" class="form-control" size="20" required /><input type="hidden" name="modulo" value="Reporte_Total_Apostado" class="form-control" size="20" /></td>
     <td width="80%"><input type="submit" value="Cambiar" class="btn btn-info" style="margin-top:0px" /></td>
   </tr>
 </table>
@@ -105,33 +78,47 @@ $(document).ready(function() {
     <hr />
       <table width="100%" border="1" id="Exportar_a_Excel">
         <tr>
-          <td align="center" bgcolor="#EEE"><strong>Nombre Agencia</strong></td>
-          <td align="center" bgcolor="#EEE"><strong>Agencia Valor</strong></td>
-          <td align="center" bgcolor="#EEE"><strong>Tope</strong></td>
-          <td align="center" bgcolor="#EEE"><strong>Loteria</strong></td>
+          <td align="center" bgcolor="#EEE"><strong>Fecha</strong></td>
+                    <td align="center" bgcolor="#EEE"><strong>Loteria</strong></td>
           <td align="center" bgcolor="#EEE"><strong>Numero</strong></td>
           <td align="center" bgcolor="#EEE"><strong>Valor</strong></td>
-          <td align="center" bgcolor="#EEE"><strong>Fecha</strong></td>
         </tr>
         <?php 
 		$suma=0;
 		$sig=0;
 		do { ?>
           <tr>
-            <td align="center"><?php echo $row_listado['agencias']; ?></td>
-            <td align="center"><?php echo $av=$row_listado['agencia_valor']; ?></td>
-            <td align="center"><?php $t=($row_listado['tope']);
-									 echo number_format($t);
-			
-			?></td>
-            <td align="center"><?php echo $row_listado['loteria']; ?></td>
-            <td align="center"><?php echo $row_listado['numero']; ?></td>
-            <td align="center"><?php $v=($row_listado['valor']); 
-									 echo number_format($v);			
-			?></td>
             <td align="center"><?php echo $row_listado['fecha']; ?></td>
+            <td align="center"><?php 
+					
+					  
+					    mysql_select_db($database_gchance, $gchance);
+						@$query_loterias3 = "SELECT * FROM tiquetes_as_loterias tl,loterias l WHERE tl.loterias=l.id AND tl.tiquetes=".$row_listado['id'];
+						@$loterias3 = mysql_query($query_loterias3, $gchance) or die(mysql_error());
+						@$row_loterias3 = mysql_fetch_assoc($loterias3);
+						 do {
+						     echo @$row_loterias3['nombre'].', ';
+						} while (@$row_loterias3 = mysql_fetch_assoc(@$loterias3));
+					  
+					  
+					   ?></td>
+             <td align="center"><?php echo $row_listado['numero']; ?></td>
+              <td align="center"><?php  $x=$row_listado['valor']; 
+			  echo number_format($x);
+			  $suma=$suma+$x;
+			  ?></td>
+ 
+            
+          </tr>
+             <?php } while ($row_listado = mysql_fetch_assoc($listado)); ?>
+          <tr>
+            <td align="center">&nbsp;</td>
+            <td align="center">&nbsp;</td>
+            <td align="center"><strong>Total</strong></td>
+            <td align="center"><strong><?php echo number_format($suma); ?></strong></td>
+          </tr>
        
-          <?php } while ($row_listado = mysql_fetch_assoc($listado)); ?>
+
       </table>
     </div>
 	<div class="tab-pane" id="2">

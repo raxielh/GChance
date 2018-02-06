@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/vnd.ms-excel; name='excel'");
-header("Content-Disposition: filename=Reporte_chance_Cubierta_Generado_".date('Y-m-d H:i:s').".xls");
+header("Content-Disposition: filename=Reporte_chance_Consolidado_a_Pagar_Generado_".date('Y-m-d H:i:s').".xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 
